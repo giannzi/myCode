@@ -73,6 +73,11 @@ public class Preferences extends AppCompatActivity {
         return Integer.parseInt(speed);
     }
 
+    public static int getThemePref(Context c) {
+        return Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(c).getString("BKGD_PREF", String.valueOf(R.drawable.temple)));
+    }
+
+
     /**
      * SettingsFragment - Defines and initializes user preferences.
      */
