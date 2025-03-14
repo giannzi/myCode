@@ -26,6 +26,7 @@ public class GameView extends View implements TickListener{
     private int level;
     private Bitmap backgroundImage;
     private MediaPlayer soundtrack;
+    private RectF rec;
 
 
 
@@ -74,6 +75,7 @@ public class GameView extends View implements TickListener{
             soundtrack.start();
         }
         backgroundImage = BitmapFactory.decodeResource(getResources(), R.drawable.temple);
+        rec = new RectF(0, 0, w, h);
     }
 
     public void pauseMusic() {

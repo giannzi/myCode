@@ -26,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(gv);
 
 
-        if (Preferences.getMusicPref(this)){
+//        if (Preferences.getMusicPref(this)){
             mediaPlayer = MediaPlayer.create(this, R.raw.music);
             mediaPlayer.setLooping(true);
             mediaPlayer.start();
-        }
+//        }
     }
 
     @Override

@@ -18,7 +18,7 @@
             android:label="@string/title_activity_preferences" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity" />
         <activity
             android:name=".TitleScreen"
