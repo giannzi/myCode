@@ -91,6 +91,15 @@ public class Preferences extends AppCompatActivity {
             musicPref.setKey("MUSIC_PREF");
             screen.addPreference(musicPref);
 
+            // Light or Dark Theme Toggle
+            SwitchPreference lightPref = new SwitchPreference(context);
+            lightPref.setTitle("Light or Dark Theme");
+            lightPref.setSummaryOn("Light Theme");
+            lightPref.setSummaryOff("Dark Theme");
+            lightPref.setDefaultValue(true);
+            lightPref.setKey("LIGHT_PREF");
+            screen.addPreference(lightPref);
+
             // Square Movement Speed
             ListPreference speedPref = new ListPreference(context);
             String[] speedEntries = {"Fast", "Medium", "Slow"};
