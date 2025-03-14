@@ -44,9 +44,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mediaPlayer.start();
 
+        // If the user changed the theme, reload GameView
+        if (gv != null) {
+            gv.invalidate(); // Forces the view to redraw with the new theme
+        }
+
+        // Resume music only if it was playing before
+        if (mediaPlayer != null  && Preferences.getMusicPref(this)) {
+            mediaPlayer.start();
+        }
     }
+
 
     @Override
     protected void onDestroy() {

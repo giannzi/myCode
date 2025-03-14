@@ -30,7 +30,6 @@ public class GameView extends View implements TickListener{
     private int squareSpeed;
 
 
-
     /**
      * Handler is an Android class that allows a method (handleMessage)
      * to be called at regular intervals. We extend the class so we can
@@ -95,11 +94,29 @@ public class GameView extends View implements TickListener{
      */
     @Override
     public void onDraw(Canvas c) {
-        c.drawBitmap(backgroundImage, null, new RectF(0, 0, w, h), null);
+        if (!init) {
+            w = c.getWidth();
+            h = c.getHeight();
+
+            // Load background image from user preference
+            backgroundImage = BitmapFactory.decodeResource(getResources(), Preferences.getThemePref(getContext()));
+
+            createSquares();
+            init = true;
+        }
+
+        // Draw the selected background image
+        if (backgroundImage != null) {
+            c.drawBitmap(backgroundImage, null, new RectF(0, 0, w, h), null);
+        } else {
+            c.drawColor(Color.CYAN); // Fallback background color
+        }
+
         for (NumberedSquare ns : squares) {
             ns.draw(c);
         }
     }
+
 
 
     /**
