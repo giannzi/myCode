@@ -43,6 +43,7 @@ public class NumberedSquare implements TickListener{
     @Override
     public void tick() {
         move();
+        dance();
     }
 
     /**
@@ -116,16 +117,25 @@ public class NumberedSquare implements TickListener{
             normalImage = BitmapFactory.decodeResource(MainActivity.getAppContext().getResources(), R.drawable.cube1000);
             frozenImage = BitmapFactory.decodeResource(MainActivity.getAppContext().getResources(), R.drawable.frozen1000);
         }
-        danceSpeed = 10;
+        //danceSpeed = speed;
     }
+
+    /**
+     * Sets the dance speed for squares
+     * @param d
+     */
     public void setDanceSpeed(int d) {
         danceSpeed = d;
     }
 
+    /**
+     * Gives random input for dance speed
+     */
     public void dance() {
         float dx = (float)(Math.random()*danceSpeed)-danceSpeed/2;
         float dy = (float)(Math.random()*danceSpeed)-danceSpeed/2;
         bounds.offset(dx,dy);
+
     }
 
     /**
@@ -346,6 +356,8 @@ public class NumberedSquare implements TickListener{
         return velocity.x == 0 && velocity.y == 0;
     }
 
+
+//    public void update(){ dance(); }
 }
 
 

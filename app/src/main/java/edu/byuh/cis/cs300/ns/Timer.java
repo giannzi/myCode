@@ -52,6 +52,13 @@ public class Timer extends Handler implements TickListener {
         observers.clear();
     }
 
+
+    public void notifyListeners() {
+        for (var o : observers) {
+            o.tick();
+        }
+    }
+
     /**
      * It notifies all registered listeners, then schedules ticks
      * @param m
@@ -63,4 +70,5 @@ public class Timer extends Handler implements TickListener {
         }
         sendMessageDelayed(obtainMessage(), 10);
     }
+
 }

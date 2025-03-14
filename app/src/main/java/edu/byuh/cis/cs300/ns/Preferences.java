@@ -108,8 +108,8 @@ public class Preferences extends AppCompatActivity {
             String[] artEntries = {"Temple Scene","Snowy Scene", "Desert Scene"};
             String[] artEntryValues = {
                     String.valueOf(R.drawable.temple),
-                    String.valueOf(R.drawable.cube1000),
-                    String.valueOf(R.drawable.frozen1000)
+                    String.valueOf(R.drawable.snowy),
+                    String.valueOf(R.drawable.desert)
             };
             bkgdArt.setEntries(artEntries);
             bkgdArt.setEntryValues(artEntryValues);

@@ -27,6 +27,7 @@ public class GameView extends View implements TickListener{
     private int level;
     private Bitmap backgroundImage;
     private RectF rec;
+    private int squareSpeed;
 
 
 
@@ -109,13 +110,15 @@ public class GameView extends View implements TickListener{
         float w = getWidth();
         float h = getHeight();
         int danceSpeed = Preferences.getSpeedPref(getContext());
+        System.out.println(danceSpeed);
         squares.clear();
         NumberedSquare.resetIDs();
         for (int i=0; i<level; i++) {
-            NumberedSquare lauren = new NumberedSquare(res, w, h);
-            lauren.setDanceSpeed(danceSpeed);
+//            NumberedSquare lauren = new NumberedSquare(res, w, h);
+//            //lauren.setDanceSpeed(danceSpeed);
             while (true) {
                 var candidate = new NumberedSquare(w,h);
+                candidate.setDanceSpeed(danceSpeed);
                 var legal = true;
                 for (var other : squares) {
                     if (other.overlaps(candidate)) {
