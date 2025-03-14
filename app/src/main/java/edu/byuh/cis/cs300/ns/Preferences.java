@@ -73,9 +73,26 @@ public class Preferences extends AppCompatActivity {
         return Integer.parseInt(speed);
     }
 
+
+    /**
+     * Retrieves theme preferences
+     *
+     * @param c the application context
+     */
     public static int getThemePref(Context c) {
         return Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(c).getString("BKGD_PREF", String.valueOf(R.drawable.temple)));
     }
+
+    /**
+     * Retrieves whether sound effects should be enabled.
+     *
+     * @param c the application context
+     * @return true if sound effects are enabled, false otherwise
+     */
+    public static boolean areSoundEffectsEnabled(Context c) {
+        return PreferenceManager.getDefaultSharedPreferences(c).getBoolean("SFX_PREF", true);
+    }
+
 
 
     /**
@@ -96,11 +113,11 @@ public class Preferences extends AppCompatActivity {
             musicPref.setKey("MUSIC_PREF");
             screen.addPreference(musicPref);
 
-            // Light or Dark Theme Toggle
+            // Toggle Sound Effects
             SwitchPreference lightPref = new SwitchPreference(context);
-            lightPref.setTitle("Light or Dark Theme");
-            lightPref.setSummaryOn("Light Theme");
-            lightPref.setSummaryOff("Dark Theme");
+            lightPref.setTitle("Toggle Sound Effects");
+            lightPref.setSummaryOn("No Sound Effects");
+            lightPref.setSummaryOff("Has Sound Effects");
             lightPref.setDefaultValue(true);
             lightPref.setKey("LIGHT_PREF");
             screen.addPreference(lightPref);
