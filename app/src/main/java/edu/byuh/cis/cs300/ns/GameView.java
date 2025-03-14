@@ -1,6 +1,7 @@
 package edu.byuh.cis.cs300.ns;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -25,7 +26,6 @@ public class GameView extends View implements TickListener{
     private int expectedSquareNumber;
     private int level;
     private Bitmap backgroundImage;
-    private MediaPlayer soundtrack;
     private RectF rec;
 
 
@@ -69,30 +69,10 @@ public class GameView extends View implements TickListener{
         createSquares();
         // Show "Level 1" Toast when game starts
         Toast.makeText(context, "Level 1", Toast.LENGTH_SHORT).show();
-        soundtrack= MediaPlayer.create(context,R.raw.music);
-        soundtrack.setLooping(true);
-        if (Preferences.getMusicPref(context)){
-            soundtrack.start();
-        }
         backgroundImage = BitmapFactory.decodeResource(getResources(), R.drawable.temple);
         rec = new RectF(0, 0, w, h);
     }
 
-    public void pauseMusic() {
-        if(Preferences.getMusicPref(getContext())) {
-            soundtrack.pause();
-        }
-    }
-
-    public void resumeMusic() {
-        if(Preferences.getMusicPref(getContext())) {
-            soundtrack.start();
-        }
-    }
-
-    public void unloadMusic() {
-        soundtrack.release();
-    }
 
     /**
      * This method is called by Android when the view size is known.
@@ -125,9 +105,15 @@ public class GameView extends View implements TickListener{
      * Helper method for creating numbered squares for current level
      */
     private void createSquares() {
+        Resources res = getResources();
+        float w = getWidth();
+        float h = getHeight();
+        int danceSpeed = Preferences.getSpeedPref(getContext());
         squares.clear();
         NumberedSquare.resetIDs();
         for (int i=0; i<level; i++) {
+            NumberedSquare lauren = new NumberedSquare(res, w, h);
+            lauren.setDanceSpeed(danceSpeed);
             while (true) {
                 var candidate = new NumberedSquare(w,h);
                 var legal = true;

@@ -94,7 +94,7 @@ public class Preferences extends AppCompatActivity {
             // Square Movement Speed
             ListPreference speedPref = new ListPreference(context);
             String[] speedEntries = {"Fast", "Medium", "Slow"};
-            String[] speedValues = {"30", "10", "6"};
+            String[] speedValues = {"30", "10", "1"};
             speedPref.setEntries(speedEntries);
             speedPref.setEntryValues(speedValues);
             speedPref.setTitle("Square Speed");

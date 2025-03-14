@@ -1,5 +1,6 @@
 package edu.byuh.cis.cs300.ns;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -30,6 +31,10 @@ public class NumberedSquare implements TickListener{
     private static Bitmap normalImage;
     private static Bitmap frozenImage;
     private boolean frozen;
+    private int danceSpeed;
+
+    public NumberedSquare(Resources res, float w, float h) {
+    }
 
 
     /**
@@ -111,7 +116,16 @@ public class NumberedSquare implements TickListener{
             normalImage = BitmapFactory.decodeResource(MainActivity.getAppContext().getResources(), R.drawable.cube1000);
             frozenImage = BitmapFactory.decodeResource(MainActivity.getAppContext().getResources(), R.drawable.frozen1000);
         }
+        danceSpeed = 10;
+    }
+    public void setDanceSpeed(int d) {
+        danceSpeed = d;
+    }
 
+    public void dance() {
+        float dx = (float)(Math.random()*danceSpeed)-danceSpeed/2;
+        float dy = (float)(Math.random()*danceSpeed)-danceSpeed/2;
+        bounds.offset(dx,dy);
     }
 
     /**
